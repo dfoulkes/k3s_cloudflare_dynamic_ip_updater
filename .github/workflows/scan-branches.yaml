@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check Build Quality Control
-      uses: ./.github/workflows/reusable-quality-control.yml@main
+      uses: ./.github/workflows/quality-control.yml@main
