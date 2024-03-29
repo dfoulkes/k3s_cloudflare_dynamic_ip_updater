@@ -10,11 +10,12 @@ class TestCloudflareUpdater(unittest.TestCase):
     @patch('os.environ.get')
     def test_update_when_value_has_changed(self, mock_get, mock_get_ip, mock_cf_api):
         # Arrange
-        def side_effect(arg):
+        def side_effect(arg, default=None):
             if arg == 'CF_TOKEN':
                 return 'test_token'
             if arg == 'CURRENT_DOMAIN':
                 return 'test.com'
+            return default
 
         mock_get.side_effect = side_effect
         mock_get_ip.return_value = '123.123.123.124'
@@ -36,11 +37,12 @@ class TestCloudflareUpdater(unittest.TestCase):
     @patch('os.environ.get')
     def test_do_not_update_when_the_current_ip_equals_A_record_value(self, mock_get, mock_get_ip, mock_cf_api):
         # Arrange
-        def side_effect(arg):
+        def side_effect(arg, default=None):
             if arg == 'CF_TOKEN':
                 return 'test_token'
             if arg == 'CURRENT_DOMAIN':
                 return 'test.com'
+            return default
 
         mock_get.side_effect = side_effect
         mock_get_ip.return_value = '123.123.123.123'
