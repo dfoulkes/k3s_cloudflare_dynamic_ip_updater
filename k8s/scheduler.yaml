@@ -13,7 +13,8 @@ spec:
           - name: cloudflare-ip-updater
             image: ghcr.io/dfoulkes/k3s_cloudflare_dynamic_ip_updater:latest
             command:
-            - cfcli update
+            - cfcli
+            - update
             env:
             - name: CURRENT_DOMAIN
               valueFrom:
