@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./dist/cloudflareupdateip-0.1.0-py3-none-any.whl
-          key: ${{ runner.os }}-wheels-${{ hashFiles('**/poetry.lock') }}
+          key: "DF_CFUI_WHEEL"
 
 ### Docker Build and Publish
   publish:
@@ -49,7 +49,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ./dist/cloudflareupdateip-0.1.0-py3-none-any.whl
-        key: ${{ runner.os }}-wheels-${{ hashFiles('**/poetry.lock') }}
+        key: "DF_CFUI_WHEEL"
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
