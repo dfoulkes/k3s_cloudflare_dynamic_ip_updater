@@ -37,8 +37,6 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-    - name: Build
-      uses: ./.github/workflows/quality-control.yaml@main
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
