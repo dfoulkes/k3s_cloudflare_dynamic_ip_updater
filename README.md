@@ -12,11 +12,14 @@ This works as follows:
 2. Get the current IP address of the DNS record in Cloudflare
 3. If the IP addresses are different, update the DNS record with the new IP address
 
+---
+
 # Requirements
 
 - Python 3.11+
 - Cloudflare API Token
-- Cloudflare Zone ID
+
+---
 
 # Installation
 
