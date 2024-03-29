@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Build
-      uses: ./.github/workflows/quality-control@main
+      uses: ./.github/workflows/quality-control.yaml@main
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
