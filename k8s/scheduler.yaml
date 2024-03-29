@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cloudflare-ip-updater
+  namespace: default
+spec:
+  schedule: "*/15 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cloudflare-ip-updater
+            image: ghcr.io/dfoulkes/k3s_cloudflare_dynamic_ip_updater:latest
+            command:
+            - cfcli update
+            env:
+            - name: CURRENT_DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: website-domain-secret
+                  key: website-domain
+            - name: CF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cf-secret
+                  key: cf-token
+          restartPolicy: OnFailure
