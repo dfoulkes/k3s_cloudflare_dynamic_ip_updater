@@ -2,6 +2,7 @@
 
 .idea/**
 
+k8s/secrets.sh
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
