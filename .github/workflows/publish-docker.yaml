@@ -57,10 +57,11 @@ jobs:
 
     - id: release
       uses: rymndhng/release-on-push-action@v0.28.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         bump_version_scheme: major
         tag_prefix: v
-        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: publish container
       uses: docker/build-push-action@v5
