@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "cloudflareupdateip"
+version = "0.1.0"
+description = "A simple application to update the cloduflare A record based on current ip address."
+authors = ["Dan Foulkes <danfoulkes@gmail.com>"]
+readme = "README.md"
+packages = [
+            {include = "cloudflareupdateip/application"},
+            {include = "cloudflareupdateip/backend"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+cloudflare = "^2.19.0"
+click = "^8.1.7"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+
+[tool.poetry.scripts]
+cfcli = "cloudflareupdateip.application.user_interface:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
