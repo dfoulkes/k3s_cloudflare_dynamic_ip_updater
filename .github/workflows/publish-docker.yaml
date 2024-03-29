@@ -32,11 +32,24 @@ jobs:
       - name: Run Pylinter
         run: |
           poetry run pylint **/*.py
+
+      - name: Cache wheel file
+        uses: actions/cache@v3
+        with:
+          path: ./dist/cloudflareupdateip-0.1.0-py3-none-any.whl
+          key: ${{ runner.os }}-wheels-${{ hashFiles('**/poetry.lock') }}
+
 ### Docker Build and Publish
   publish:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
+
+    - name: Restore cached wheel file
+      uses: actions/cache@v3
+      with:
+        path: ./dist/cloudflareupdateip-0.1.0-py3-none-any.whl
+        key: ${{ runner.os }}-wheels-${{ hashFiles('**/poetry.lock') }}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
