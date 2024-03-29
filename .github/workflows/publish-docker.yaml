@@ -60,6 +60,7 @@ jobs:
       with:
         bump_version_scheme: major
         tag_prefix: v
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: publish container
       uses: docker/build-push-action@v5
